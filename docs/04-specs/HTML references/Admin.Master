@@ -1,0 +1,238 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="AIKER.Admin.Admin" %>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="AIKER es una plataforma innovadora de gestión y fomento del conocimiento con inteligencia artificial.">
+    <meta name="author" content="R:Solver">
+    <title>AIKER by R:Solver | Administración</title>
+    <!-- Preloader -->
+    <style>
+
+
+        body > div.preloader {
+            position: fixed;
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1071;
+            opacity: 0;
+            transition: opacity .5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body:not(.loaded) > div.preloader {
+            opacity: 1;
+        }
+
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+
+        body.loaded > div.preloader {
+            animation: hidePreloader .5s linear .5s forwards;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.querySelector('body').classList.add('loaded');
+            }, 300);
+        });
+    </script>
+    <!-- Quick CSS -->
+    <link rel="stylesheet" href="../assets/css/quick-website.css" id="stylesheet">
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</head>
+<body class="docs">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-cookies" data-backdrop="false" aria-labelledby="modal-cookies" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-aside left-4 right-4 bottom-4">
+            <div class="modal-content bg-dark-dark">
+                <div class="modal-body">
+                    <!-- Text -->
+                    <p class="text-sm text-white mb-3">
+                        Utilizamos cookies para mejorar la experiencia de uso de este sitio. Al acceder a este sitio Ud. acepta el uso de las cookies.
+                    </p>
+                    <!-- Buttons -->
+                    <a href="../pages/terminos.html" class="btn btn-sm btn-white" target="_blank">Ver más</a>
+                    <button type="button" class="btn btn-sm btn-primary mr-2" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form runat="server" enctype="multipart/form-data">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="/">
+                <img alt="AIKER by R:Solver" src="../images/AIKER-logo-250.png" id="navbar-logo">
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                
+                <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="../#what">Qué hace</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administración</a>
+                        <div class="dropdown-menu dropdown-menu-single">
+						    <a href="../Admin/AdminTests.aspx" class="dropdown-item">Gestión Pruebas</a>
+						    <a href="../Admin/LoadAnswers.aspx" class="dropdown-item">Carga Pruebas</a>
+                            <a href="../Admin/LoadQuestions.aspx" class="dropdown-item">Carga Preguntas</a>
+                            <a href="../Admin/AdminUsers.aspx" class="dropdown-item">Gestión Usuarios</a>
+                            <div class="dropdown-divider"></div>
+						    <a href="../Admin/TestVocabulary.aspx" class="dropdown-item">Test Vocabulario</a>
+						    <a href="../Admin/TestSimilarity.aspx" class="dropdown-item">Test API Similitud</a>
+						    <a href="../Admin/TestReviewer.aspx" class="dropdown-item">Test Revisión Respuesta</a>
+						    <a href="../Admin/AdminConsole.aspx" class="dropdown-item">Datos en Servidor</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><% Response.Write(Username); %></a>
+                        <div class="dropdown-menu dropdown-menu-single">
+						    <a href="#" class="dropdown-item">Perfil (pend)</a>
+						    <a href="../Account/SetPassword.aspx" class="dropdown-item">Cambiar Contraseña</a>
+						    <a href="../Account/Login.aspx" class="dropdown-item">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <div>
+        
+    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+    </asp:ContentPlaceHolder>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="position-relative" id="footer-main">
+        <div class="footer pt-lg-7 footer-dark bg-dark">
+            <!-- SVG shape -->
+            <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
+                <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class="">
+                <polygon points="2560 0 2560 100 0 100"></polygon>
+                </svg>
+            </div>
+            <!-- Footer -->
+            <div class="container pt-4">
+                <div class="row">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <!-- Theme's logo -->
+                        <a href="../" target="_blank">
+                            <img alt="AIKER by R:Solver" src="../images/AIKER-logowhite-no-back.png" id="footer-logo">
+                        </a>
+                        <!-- Webpixels' mission -->
+                        <p class="mt-4 text-sm opacity-8 pr-lg-4">AIKER propone una innovadora forma de reforzar el aprendizaje humano, apoyado por tecnología propietaria de inteligencia artificial.</p>
+                        <!-- Social -->
+                        <ul class="nav mt-4">
+                            <li class="nav-item">
+                                <a class="nav-link pl-0" href="https://twitter.com/r_solver" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.linkedin.com/company/r-solver/" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.facebook.com/RSolverSoftware" target="_blank">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.instagram.com/aiker.ai/" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">Reforzando el aprendizaje</h6>
+                        <p>AIKER resuelve el desafío de manejar grandes fuentes de información para facilitar el entendimiento humano, validando y reforzando los conceptos encontrados.</p>
+                    </div>
+                    <div class="col-lg-3 col-6 col-sm-4 mb-5 mb-lg-0">
+                        <h6 class="heading mb-3">Entendimiento de Lenguaje Natural</h6>
+                        <p>
+                            Comprensión real de la argumentación en respuestas abiertas, para analizar y evaluar en forma objetiva y automática los conceptos planteados en cada una de ellas.
+                        </p>
+                    </div>
+                </div>
+                <hr class="divider divider-fade divider-dark my-4">
+                <div class="row align-items-center justify-content-md-between pb-4">
+                    <div class="col-md-6">
+                        <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                            &copy; 2011-2026 <a href="https://aiker.ai" class="font-weight-bold" target="_blank">AIKER</a> by R:Solver. Todos los derechos reservados.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../terminos.html">
+                                    Términos y Condiciones
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../privacidad.html">
+                                    Privacidad
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../cookies.html">
+                                    Cookies
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Core JS  -->
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/svg-injector/dist/svg-injector.min.js"></script>
+    <script src="../assets/libs/feather-icons/dist/feather.min.js"></script>
+    <!-- Quick JS -->
+    <script src="../assets/js/quick-website.js"></script>
+    <!-- Feather Icons -->
+    <script>
+        feather.replace({
+            'width': '1em',
+            'height': '1em'
+        })
+    </script>
+
+        </form>
+</body>
+
+</html>

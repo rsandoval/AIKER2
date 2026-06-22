@@ -1,0 +1,111 @@
+Organization
+Name string
+
+Course
+Name string
+OrganizationID int
+
+Student
+Email string
+Name string
+StartDate datetime
+OrganizationID int
+CourseID int
+Phone string
+PersonalID string
+SerialNumber string
+PreferredName string
+Active bool
+
+Action
+StudentID int
+ActionDate datetime
+ActionType int
+ActionInput string
+ActionResult string
+
+ScheduledTest
+Title string
+StartDate datetime
+EndDate datetime
+NumberOfQuestions int
+CourseID int
+MaxScore float
+ScoreUnit string
+TakeOnline bool
+HeaderText string
+
+
+TestQuestion
+ScheduledTestID int
+QuestionGroup int
+QuestionText string
+MaxScore double
+PartialAnswers string
+ReferenceLink string
+QuestionSubject string
+RobotAnswer string
+
+UseAlternatives bool
+Alternatives string
+
+
+ReferenceAnswer
+TestQuestionID int
+AnswerText string
+AnswerScore double
+
+
+StudentTest
+StudentID int
+ScheduledTestID int
+InitialToken string
+TestDate datetime
+FinalScore double
+Finished bool
+Reviewed bool
+
+
+StudentTestAnswer
+TestQuestionID int
+TestAnswerNumber int
+StudentTestID int
+AnswerDate datetime
+AnswerText string
+AnswerAutoScore double
+AnswerRevisedScore double
+ReviewText string
+AnswerSimilarityScore double
+WasReviewed bool
+RobotSimilarityScore double
+__
+ClosestAnswerID int
+ClosestAnswerDistance double
+
+
+SimilarityScore
+TestQuestionID int
+StudentTestAnswerID int
+StudentTestAnswerComparedID int
+Score double
+Timestamp datetime
+
+
+Suscription
+Description string
+
+AppUser
+OrganizationID int
+CourseID int
+Fullname string
+Email string
+Password string
+PasswordNeedsChanging bool
+IsAdmin bool
+IsActive bool
+CreationDate datetime
+ConfirmationToken datetime
+LoginToken datetime
+IsConfirmed bool
+PasswordFailures int
+

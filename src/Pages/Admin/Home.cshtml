@@ -1,0 +1,77 @@
+@page
+@model AIKER2.Pages.Admin.HomeModel
+@{
+    Layout = "_Layout_Admin";
+    ViewData["Title"] = "Administración de Pruebas";
+}
+
+<section id="main" class="container">
+    <header>
+        <h2>Administración de pruebas</h2>
+    </header>
+
+    <form method="get" class="form-inline mb-3">
+        <input type="text"
+               name="search"
+               value="@Model.SearchTerm"
+               placeholder="Buscar prueba por nombre o curso..."
+               class="form-control mr-2" />
+        <button type="submit" class="btn btn-primary mr-2">Buscar</button>
+        @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+        {
+            <a href="/Admin/Home" class="btn btn-secondary">Limpiar</a>
+        }
+    </form>
+
+    <h4>@(string.IsNullOrWhiteSpace(Model.SearchTerm) ? "Pruebas Activas o Recientes" : $"Resultados para \"{Model.SearchTerm}\"")</h4>
+
+    @if (!Model.Tests.Any())
+    {
+        <p>@(string.IsNullOrWhiteSpace(Model.SearchTerm) ? "No hay pruebas registradas." : "No se encontraron pruebas.")</p>
+    }
+    else
+    {
+        <table class="table" border="0" style="border-collapse:inherit;">
+            <thead style="background-color:#4A3C8C; color:#F7F7F7; font-weight:bold;">
+                <tr>
+                    <th>Edit</th>
+                    <th>Review</th>
+                    <th>ID</th>
+                    <th>Course</th>
+                    <th>Test Title</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th># Q</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var t in Model.Tests)
+                {
+                    var isCurrent = t.EndDate >= DateTime.Today;
+                    <tr style="background-color:#E7E7FF; color:#4A3C8C;">
+                        <td>
+                            <a href="/Admin/EditTest/@t.Id">
+                                <img src="~/images/edit.png" width="20" alt="Edit" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Admin/ReviewTest/@t.Id">
+                                <img src="~/images/review.png" width="20" alt="Review" />
+                            </a>
+                        </td>
+                        <td>@t.Id</td>
+                        <td>@t.CourseName</td>
+                        <td>@t.Title</td>
+                        <td>@t.StartDate.ToString("dd/MM/yyyy")</td>
+                        <td>@t.EndDate.ToString("dd/MM/yyyy")</td>
+                        <td>@t.NumberOfQuestions</td>
+                        <td><img src="~/images/@(isCurrent ? "true" : "false").png" width="20" alt="@(isCurrent ? "Activa" : "Inactiva")" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a href="/Admin/CreateTest" class="btn btn-info">Crear Nuevo Test</a>
+</section>
