@@ -1,0 +1,60 @@
+@page
+@model AIKER2.Pages.Account.LoginModel
+@{
+    Layout = "/Pages/Shared/_Layout_Login.cshtml";
+}
+
+<section>
+    <div class="container d-flex flex-column">
+        <div class="row align-items-center justify-content-center min-vh-100">
+            <div class="col-md-6 col-lg-5 col-xl-5 py-6 py-md-0">
+                <div class="card shadow zindex-100 mb-0">
+                    <div class="card-body px-md-5 py-5">
+                        <div class="mb-5">
+                            <h6 class="h3">Acceso Administración</h6>
+                            @if (Model.ErrorMessage is not null)
+                            {
+                                <div class="alert alert-danger mt-3 mb-0">@Model.ErrorMessage</div>
+                            }
+                        </div>
+                        <span class="clearfix"></span>
+                        <form method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                <label class="form-control-label">E-mail</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i data-feather="user"></i></span>
+                                    </div>
+                                    <input asp-for="Email" type="email" placeholder="Email"
+                                           class="form-control form-control-emphasized" autocomplete="username">
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <label class="form-control-label">Contraseña</label>
+                                    <div class="mb-2">
+                                        <a href="/Account/RecoverPassword"
+                                           class="small text-muted text-underline--dashed border-primary">
+                                            Recuperar contraseña
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i data-feather="key"></i></span>
+                                    </div>
+                                    <input asp-for="Password" type="password" placeholder="Contraseña"
+                                           class="form-control form-control-emphasized" autocomplete="current-password">
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-block btn-primary">Iniciar Sesión</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

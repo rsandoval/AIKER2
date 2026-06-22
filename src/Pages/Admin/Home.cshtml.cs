@@ -1,8 +1,11 @@
 using AIKER2.Application.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AIKER2.Pages.Admin;
+
+[Authorize(AuthenticationSchemes = "AikerAuth")]
 
 public class HomeModel(GetRecentTestsQueryHandler handler) : PageModel
 {
